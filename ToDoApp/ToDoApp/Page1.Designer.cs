@@ -83,6 +83,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Page1";
             this.Size = new System.Drawing.Size(1229, 557);
+            this.Load += new System.EventHandler(this.Page1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

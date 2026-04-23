@@ -42,9 +42,6 @@ namespace ToDoApp
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
             TaskSelected?.Invoke(this, new TaskSelectedEventArgs(selectedTask));
-            
-
-            //taskPanel1.UpdateLabels(selectedTask.Name, selectedTask.Description);
         }
     }
 }

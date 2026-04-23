@@ -30,5 +30,12 @@ namespace ToDoApp
         {
             list.Add(new Task("new task", "new task description"));
         }
+
+        private void listBox1_SelectedValueChanged(object sender, System.EventArgs e)
+        {
+            Task selectedTask = (Task)listBox1.SelectedItem;
+
+            taskPanel1.UpdateLabels(selectedTask.Name, selectedTask.Description);
+        }
     }
 }

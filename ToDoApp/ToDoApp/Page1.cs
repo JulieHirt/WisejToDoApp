@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Wisej.Web;
 using Wisej.Web.Markup;
@@ -9,9 +10,15 @@ namespace ToDoApp
     public partial class Page1 : Page
     {
         BindingList<Task> list;
+        public event EventHandler<TaskSelectedEventArgs> TaskSelected;
+
         public Page1()
         {
             InitializeComponent();
+            TaskSelected += (s, e) =>
+            {
+                taskPanel1.UpdateLabels(e.TaskItem.Name, e.TaskItem.Description);
+            };
 
         }
 
@@ -34,8 +41,10 @@ namespace ToDoApp
         private void listBox1_SelectedValueChanged(object sender, System.EventArgs e)
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
+            TaskSelected?.Invoke(this, new TaskSelectedEventArgs(selectedTask));
+            
 
-            taskPanel1.UpdateLabels(selectedTask.Name, selectedTask.Description);
+            //taskPanel1.UpdateLabels(selectedTask.Name, selectedTask.Description);
         }
     }
 }

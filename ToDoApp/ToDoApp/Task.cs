@@ -1,4 +1,6 @@
-﻿namespace ToDoApp
+﻿using System;
+
+namespace ToDoApp
 {
     public class Task
     {
@@ -9,6 +11,16 @@
         {
             Name = name;
             Description = description;
+        }
+    }
+
+    public class TaskSelectedEventArgs: EventArgs
+    { 
+        public Task TaskItem { get; }
+
+        public TaskSelectedEventArgs(Task taskItem)
+        {
+            TaskItem = taskItem;
         }
     }
 }

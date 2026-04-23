@@ -17,6 +17,7 @@ namespace ToDoApp
             InitializeComponent();
             TaskSelected += (s, e) =>
             {
+                AlertBox.Show("Task selected: " + e.TaskItem.Name);
                 taskPanel1.UpdateLabels(e.TaskItem.Name, e.TaskItem.Description);
             };
 

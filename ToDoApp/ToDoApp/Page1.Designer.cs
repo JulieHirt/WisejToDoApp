@@ -28,23 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.contextMenu1 = new Wisej.Web.ContextMenu(this.components);
-            this.contextMenu2 = new Wisej.Web.ContextMenu(this.components);
             this.label1 = new Wisej.Web.Label();
             this.listBox1 = new Wisej.Web.ListBox();
             this.button1 = new Wisej.Web.Button();
             this.button2 = new Wisej.Web.Button();
             this.taskPanel1 = new ToDoApp.TaskPanel();
             this.SuspendLayout();
-            // 
-            // contextMenu1
-            // 
-            this.contextMenu1.Name = "contextMenu1";
-            // 
-            // contextMenu2
-            // 
-            this.contextMenu2.Name = "contextMenu2";
             // 
             // label1
             // 
@@ -93,16 +82,13 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Name = "Page1";
-            this.Size = new System.Drawing.Size(1018, 360);
+            this.Size = new System.Drawing.Size(1229, 557);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Wisej.Web.ContextMenu contextMenu1;
-        private Wisej.Web.ContextMenu contextMenu2;
         private Wisej.Web.Label label1;
         private Wisej.Web.ListBox listBox1;
         private Wisej.Web.Button button1;

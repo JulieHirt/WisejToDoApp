@@ -10,8 +10,7 @@ namespace ToDoApp
     public partial class Page1 : Page
     {
         BindingList<Task> list;
-        public event EventHandler<TaskSelectedEventArgs> TaskSelected;
-
+        public event EventHandler<TaskEventArgs> TaskSelected;
 
         public Page1()
         {
@@ -43,7 +42,7 @@ namespace ToDoApp
         private void listBox1_SelectedValueChanged(object sender, System.EventArgs e)
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
-            TaskSelected?.Invoke(this, new TaskSelectedEventArgs(selectedTask));
+            TaskSelected?.Invoke(this, new TaskEventArgs(selectedTask));
         }
     }
 }

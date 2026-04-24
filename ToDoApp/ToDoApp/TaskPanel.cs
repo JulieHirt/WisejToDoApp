@@ -15,7 +15,7 @@ namespace ToDoApp
             page.TaskSelected += OnTaskSelected;
         }
 
-        private void OnTaskSelected(object sender, TaskSelectedEventArgs e)
+        private void OnTaskSelected(object sender, TaskEventArgs e)
         {
             UpdateLabels(e.TaskItem.Name, e.TaskItem.Description);
         }

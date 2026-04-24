@@ -14,11 +14,11 @@ namespace ToDoApp
         }
     }
 
-    public class TaskSelectedEventArgs: EventArgs
+    public class TaskEventArgs: EventArgs
     { 
         public Task TaskItem { get; }
 
-        public TaskSelectedEventArgs(Task taskItem)
+        public TaskEventArgs(Task taskItem)
         {
             TaskItem = taskItem;
         }

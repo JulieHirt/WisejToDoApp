@@ -11,6 +11,8 @@ namespace ToDoApp
     {
         BindingList<Task> list;
         public event EventHandler<TaskEventArgs> TaskSelected;
+        public event EventHandler TaskAddedOrDeleted;
+
 
         public Page1()
         {
@@ -20,7 +22,16 @@ namespace ToDoApp
                 AlertBox.Show("Task selected: " + e.TaskItem.Name);
             };
             taskPanel1.Attach(this);
+            TaskAddedOrDeleted += UpdateTaskRemaining;
 
+            
+
+        }
+
+
+        public void UpdateTaskRemaining(object sender, EventArgs e)
+        {
+            label1.Text = "Tasks Remaining: "+list.Count;
         }
 
         private void Page1_Load(object sender, System.EventArgs e)
@@ -32,17 +43,27 @@ namespace ToDoApp
 
             listBox1.DataSource = list;
             listBox1.DisplayMember = "Name";
+
+            TaskAddedOrDeleted?.Invoke(this, new EventArgs());
         }
 
         private void button1_Click(object sender, System.EventArgs e)
         {
             list.Add(new Task("new task", "new task description"));
+            TaskAddedOrDeleted?.Invoke(this, new EventArgs());
         }
 
         private void listBox1_SelectedValueChanged(object sender, System.EventArgs e)
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
             TaskSelected?.Invoke(this, new TaskEventArgs(selectedTask));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Task selectedTask = (Task)listBox1.SelectedItem;
+            list.Remove(selectedTask);
+            TaskAddedOrDeleted?.Invoke(this, new EventArgs());
         }
     }
 }

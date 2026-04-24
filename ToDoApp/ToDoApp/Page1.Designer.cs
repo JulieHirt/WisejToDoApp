@@ -68,6 +68,7 @@
             this.button2.Size = new System.Drawing.Size(100, 37);
             this.button2.TabIndex = 3;
             this.button2.Text = "Complete Task";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // taskPanel1
             // 

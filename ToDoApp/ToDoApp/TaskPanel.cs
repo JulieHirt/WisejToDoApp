@@ -10,7 +10,15 @@ namespace ToDoApp
             InitializeComponent();
         }
 
+        public void Attach(Page1 page)
+        {
+            page.TaskSelected += OnTaskSelected;
+        }
 
+        private void OnTaskSelected(object sender, TaskSelectedEventArgs e)
+        {
+            UpdateLabels(e.TaskItem.Name, e.TaskItem.Description);
+        }
 
 
         public void UpdateLabels(string name, string description)

@@ -12,14 +12,15 @@ namespace ToDoApp
         BindingList<Task> list;
         public event EventHandler<TaskSelectedEventArgs> TaskSelected;
 
+
         public Page1()
         {
             InitializeComponent();
             TaskSelected += (s, e) =>
             {
                 AlertBox.Show("Task selected: " + e.TaskItem.Name);
-                taskPanel1.UpdateLabels(e.TaskItem.Name, e.TaskItem.Description);
             };
+            taskPanel1.Attach(this);
 
         }
 

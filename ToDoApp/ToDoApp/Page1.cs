@@ -45,19 +45,27 @@ namespace ToDoApp
         private void Page1_Load(object sender, System.EventArgs e)
         {
             list = new BindingList<Task>();
-            //list.Add(new Task("Clean Bathroom", "The bathroom's toilet and sink need cleaned"));
-            //list.Add(new Task("Buy Groceries", "We need milk and eggs"));
-            //list.Add(new Task("Do laundry", "The laundry basket is full"));
-            list.Add(new Task("new task", "new task description", () => { AlertBox.Show("new task"); }));
+            list.Add(new Task("Clean Bathroom", "The bathroom's toilet and sink need cleaned", () => { MessageBox.Show("Bathroom Cleaned!"); }));
+            list.Add(new Task("Buy Groceries", "We need milk and eggs", GroceriesMethod));
+            list.Add(new Task("Do laundry", "The laundry basket is full", LaundryMethod));
             listBox1.DataSource = list;
             listBox1.DisplayMember = "Name";
 
             TaskAdded?.Invoke(this, new EventArgs());
         }
 
+        public void GroceriesMethod()
+        {
+            MessageBox.Show("The store was out of eggs", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void LaundryMethod()
+        {
+            MessageBox.Show("The dryer is broken, we'll have to air dry the clothes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
-            list.Add(new Task("new task", "new task description", () => { AlertBox.Show("new task"); }));
+            list.Add(new Task("new task", "new task description", () => { AlertBox.Show("new task completed!"); }));
             TaskAdded?.Invoke(this, new EventArgs());
         }
 
@@ -74,6 +82,7 @@ namespace ToDoApp
         private void buttonCompleted_Click(object sender, EventArgs e)
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
+            selectedTask.Action();
             list.Remove(selectedTask);
             if(list.Count == 0)
             {

@@ -19,12 +19,13 @@ namespace ToDoApp
             InitializeComponent();
             TaskSelected += (s, e) =>
             {
+                if (e?.TaskItem == null)
+                    return;
+
                 AlertBox.Show("Task selected: " + e.TaskItem.Name);
             };
             taskPanel1.Attach(this);
             TaskAddedOrDeleted += UpdateTaskRemaining;
-
-            
 
         }
 
@@ -56,6 +57,10 @@ namespace ToDoApp
         private void listBox1_SelectedValueChanged(object sender, System.EventArgs e)
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
+
+            if (selectedTask == null)
+                return;
+
             TaskSelected?.Invoke(this, new TaskEventArgs(selectedTask));
         }
 

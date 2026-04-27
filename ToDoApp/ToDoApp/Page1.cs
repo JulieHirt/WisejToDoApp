@@ -43,10 +43,10 @@ namespace ToDoApp
         private void Page1_Load(object sender, System.EventArgs e)
         {
             list = new BindingList<Task>();
-            list.Add(new Task("Clean Bathroom", "The bathroom's toilet and sink need cleaned"));
-            list.Add(new Task("Buy Groceries", "We need milk and eggs"));
-            list.Add(new Task("Do laundry", "The laundry basket is full"));
-
+            //list.Add(new Task("Clean Bathroom", "The bathroom's toilet and sink need cleaned"));
+            //list.Add(new Task("Buy Groceries", "We need milk and eggs"));
+            //list.Add(new Task("Do laundry", "The laundry basket is full"));
+            list.Add(new Task("new task", "new task description", () => { AlertBox.Show("new task"); }));
             listBox1.DataSource = list;
             listBox1.DisplayMember = "Name";
 
@@ -55,7 +55,7 @@ namespace ToDoApp
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            list.Add(new Task("new task", "new task description"));
+            list.Add(new Task("new task", "new task description", () => { AlertBox.Show("new task"); }));
             TaskAddedOrDeleted?.Invoke(this, new EventArgs());
         }
 

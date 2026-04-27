@@ -7,10 +7,13 @@ namespace ToDoApp
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public Task(string name, string description)
+        public Action Action { get; set; }
+
+        public Task(string name, string description, Action action)
         {
             Name = name;
             Description = description;
+            Action = action;
         }
     }
 

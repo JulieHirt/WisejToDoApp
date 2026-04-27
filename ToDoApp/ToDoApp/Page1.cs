@@ -68,6 +68,10 @@ namespace ToDoApp
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
             list.Remove(selectedTask);
+            if(list.Count == 0)
+            {
+                taskPanel1.UpdateLabels("", "");
+            }
             TaskAddedOrDeleted?.Invoke(this, new EventArgs());
         }
     }

@@ -30,8 +30,8 @@
         {
             this.label1 = new Wisej.Web.Label();
             this.listBox1 = new Wisej.Web.ListBox();
-            this.button1 = new Wisej.Web.Button();
-            this.button2 = new Wisej.Web.Button();
+            this.buttonAdd = new Wisej.Web.Button();
+            this.buttonCompleted = new Wisej.Web.Button();
             this.taskPanel1 = new ToDoApp.TaskPanel();
             this.SuspendLayout();
             // 
@@ -52,23 +52,23 @@
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
             // 
-            // button1
+            // buttonAdd
             // 
-            this.button1.Location = new System.Drawing.Point(19, 287);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 42);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Add Task";
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAdd.Location = new System.Drawing.Point(19, 287);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(95, 42);
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "Add Task";
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // button2
+            // buttonCompleted
             // 
-            this.button2.Location = new System.Drawing.Point(142, 290);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 37);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Complete Task";
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonCompleted.Location = new System.Drawing.Point(142, 290);
+            this.buttonCompleted.Name = "buttonCompleted";
+            this.buttonCompleted.Size = new System.Drawing.Size(100, 37);
+            this.buttonCompleted.TabIndex = 3;
+            this.buttonCompleted.Text = "Complete Task";
+            this.buttonCompleted.Click += new System.EventHandler(this.buttonCompleted_Click);
             // 
             // taskPanel1
             // 
@@ -80,8 +80,8 @@
             // Page1
             // 
             this.Controls.Add(this.taskPanel1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCompleted);
+            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Name = "Page1";
@@ -95,8 +95,8 @@
         #endregion
         private Wisej.Web.Label label1;
         private Wisej.Web.ListBox listBox1;
-        private Wisej.Web.Button button1;
-        private Wisej.Web.Button button2;
+        private Wisej.Web.Button buttonAdd;
+        private Wisej.Web.Button buttonCompleted;
         private TaskPanel taskPanel1;
     }
 }

@@ -11,7 +11,8 @@ namespace ToDoApp
     {
         BindingList<Task> list;
         public event EventHandler<TaskEventArgs> TaskSelected;
-        public event EventHandler TaskAddedOrDeleted;
+        public event EventHandler TaskAdded;
+        public event EventHandler TaskCompleted;
         public event EventHandler NoTasksRemaining;
 
 
@@ -30,7 +31,8 @@ namespace ToDoApp
                 AlertBox.Show("All tasks completed!");
             };
             taskPanel1.Attach(this);
-            TaskAddedOrDeleted += UpdateTaskRemaining;
+            TaskAdded += UpdateTaskRemaining;
+            TaskCompleted += UpdateTaskRemaining;
 
         }
 
@@ -50,13 +52,13 @@ namespace ToDoApp
             listBox1.DataSource = list;
             listBox1.DisplayMember = "Name";
 
-            TaskAddedOrDeleted?.Invoke(this, new EventArgs());
+            TaskAdded?.Invoke(this, new EventArgs());
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void buttonAdd_Click(object sender, System.EventArgs e)
         {
             list.Add(new Task("new task", "new task description", () => { AlertBox.Show("new task"); }));
-            TaskAddedOrDeleted?.Invoke(this, new EventArgs());
+            TaskAdded?.Invoke(this, new EventArgs());
         }
 
         private void listBox1_SelectedValueChanged(object sender, System.EventArgs e)
@@ -69,7 +71,7 @@ namespace ToDoApp
             TaskSelected?.Invoke(this, new TaskEventArgs(selectedTask));
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonCompleted_Click(object sender, EventArgs e)
         {
             Task selectedTask = (Task)listBox1.SelectedItem;
             list.Remove(selectedTask);
@@ -77,7 +79,8 @@ namespace ToDoApp
             {
                 NoTasksRemaining.Invoke(this, new EventArgs());
             }
-            TaskAddedOrDeleted?.Invoke(this, new EventArgs());
+            TaskCompleted?.Invoke(this, new EventArgs());
         }
+
     }
 }

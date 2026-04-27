@@ -12,6 +12,7 @@ namespace ToDoApp
         BindingList<Task> list;
         public event EventHandler<TaskEventArgs> TaskSelected;
         public event EventHandler TaskAddedOrDeleted;
+        public event EventHandler NoTasksRemaining;
 
 
         public Page1()
@@ -23,6 +24,10 @@ namespace ToDoApp
                     return;
 
                 AlertBox.Show("Task selected: " + e.TaskItem.Name);
+            };
+            NoTasksRemaining += (s, e) =>
+            {
+                AlertBox.Show("All tasks completed!");
             };
             taskPanel1.Attach(this);
             TaskAddedOrDeleted += UpdateTaskRemaining;
@@ -70,7 +75,7 @@ namespace ToDoApp
             list.Remove(selectedTask);
             if(list.Count == 0)
             {
-                taskPanel1.UpdateLabels("", "");
+                NoTasksRemaining.Invoke(this, new EventArgs());
             }
             TaskAddedOrDeleted?.Invoke(this, new EventArgs());
         }

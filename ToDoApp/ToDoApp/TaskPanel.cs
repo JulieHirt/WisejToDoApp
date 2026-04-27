@@ -13,6 +13,7 @@ namespace ToDoApp
         public void Attach(Page1 page)
         {
             page.TaskSelected += OnTaskSelected;
+            page.NoTasksRemaining += OnNoTasksRemaining;
         }
 
         private void OnTaskSelected(object sender, TaskEventArgs e)
@@ -23,8 +24,13 @@ namespace ToDoApp
             UpdateLabels(e.TaskItem.Name, e.TaskItem.Description);
         }
 
+        private void OnNoTasksRemaining(object sender, EventArgs e)
+        {
+            UpdateLabels("", "");
+        }
 
-        public void UpdateLabels(string name, string description)
+
+        private void UpdateLabels(string name, string description)
         {
             TaskName.Text = name;
             TaskDescription.Text = description; 

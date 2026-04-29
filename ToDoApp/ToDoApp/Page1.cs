@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Wisej.Web;
 using Wisej.Web.Markup;
 
@@ -87,6 +89,12 @@ namespace ToDoApp
             if(list.Count == 0)
             {
                 NoTasksRemaining.Invoke(this, new EventArgs());
+            }
+            else
+            {
+                //send it the task after the one that was just removed, which is auto-selected
+                Task newSelectedTask = (Task)listBox1.SelectedItem;
+                TaskSelected?.Invoke(this, new TaskEventArgs(newSelectedTask));
             }
             TaskCompleted?.Invoke(this, new EventArgs());
         }
